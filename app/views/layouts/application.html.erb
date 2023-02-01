@@ -4,7 +4,6 @@
     <title>Thefirstrails</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -12,13 +11,11 @@
   <body>
     <%= yield %>
     <% if user_signed_in? %>
-    <p>hello <%= current_user.email%></p>
-    <%=link_to"ログアウト" ,destroy_user_session_path, method: :delete %>
-    <% else%>
-    <%=link_to "サインイン", new_user_session_path%>
-    <%=link_to "ユーサ登録",new_user_registration_path%>
-    <hr>
-    <h1>HOME PAGE</h1>
-    <%end%>
+        <p>こんにちは、<%= link_to current_user.email, users_show_path %></p>
+        <%=link_to"ログアウト", destroy_user_session_path, method: :delete %>
+    <% else %>
+        <%=link_to"サインイン", new_user_session_path %>
+        <%=link_to"ユーサ登録", new_user_registration_path %>
+    <% end %>
   </body>
 </html>
